@@ -1,6 +1,6 @@
-# InvestMint V2 — Running the System
+# InvestMint V2
 
-## Overview: what's running what
+## Overview
 
 V2 uses **three servers**. You need all three for full functionality.
 
@@ -51,46 +51,7 @@ Opens at `http://localhost:5173`.
 
 ---
 
-## Signing in
-
-Use the same email and password you registered with — both the V2 backend and the original backend point to the **same MongoDB Atlas cluster**, so existing accounts work. If you get "invalid email or password", the most common cause is that the V2 backend isn't running yet (Terminal 1 above).
-
----
-
-## Environment variables
-
-Both `.env` files are already populated in the repo for local development. If you need to reset them:
-
-**`recreation/backend/.env`**
-```
-PORT=8000
-MONGO_URI=mongodb+srv://developer:developer@investmint.zytsi.mongodb.net/investmint?retryWrites=true&w=majority&appName=InvestMint
-JWT_SECRET=investmint-v2-super-secret-jwt-key-change-in-production
-FRONTEND_URL=http://localhost:5173
-```
-
-**`recreation/frontend/.env`**
-```
-VITE_BANKING_API_URL=http://localhost:8000
-VITE_CASHFLOW_API_URL=http://localhost:4000
-VITE_UNIFIED_WORKSPACE_ID=679cf39ee3233e402a579aa8
-```
-
-**`cash-flow-backend/backend/.env`** (from the original setup doc)
-```
-MONGO_URI=mongodb+srv://developer:developer@investmint.zytsi.mongodb.net/investmint?retryWrites=true&w=majority&appName=InvestMint
-PORT=4000
-UNIFIED_BASE_API_URL=https://api.unified.to/accounting/
-UNIFIED_API_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzljZjM5ZWUzMjMzZTQwMmE1NzlhYTQiLCJ3b3Jrc3BhY2VfaWQiOiI2NzljZjM5ZWUzMjMzZTQwMmE1NzlhYTgiLCJpYXQiOjE3MzgzMzkyMzB9.Oad4ZWU8XMC8agc-lNADESrZj21d5AN3LwMMx05og5I
-CATEGORY_ACCOUNT=account
-CATEGORY_TRANSACTION=transaction
-CATEGORY_JOURNAL=journal
-CATEGORY_INVOICE=invoice
-```
-
----
-
-## What's not yet merged
+## Cash Flow
 
 The cash-flow backend's routes (accounts, transactions, reports) are **intentionally left separate** in V2 — the Python Airflow pipeline that generates ARIMA/LSTM/STL forecasts is tightly coupled to that backend. Merging would require porting the Python scripts too. For now the V2 frontend speaks to both backends and that works fine.
 
