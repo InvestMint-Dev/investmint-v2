@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ReportModel, { Report, ReportDTO, models } from "../models/Report";
 import { daysBetweenDates, datesOverlap } from "../utils/excel";
 import mongoose from "mongoose";

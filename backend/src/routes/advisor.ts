@@ -119,7 +119,7 @@ router.post('/create', async (req: Request, res: Response) => {
 // DELETE /api/advisor/user/:userId — delete user and all associated documents
 router.delete('/user/:userId', async (req: Request, res: Response) => {
   try {
-    const { userId } = req.params
+    const userId = String(req.params.userId)
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       res.status(400).json({ message: 'Invalid user ID' }); return
     }

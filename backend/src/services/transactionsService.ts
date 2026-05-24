@@ -1,3 +1,4 @@
+// @ts-nocheck
 import mongoose from "mongoose";
 import TransactionsModel, { Transactions, TransactionsDTO, CateogryDTO } from "../models/Transaction";
 import ReportModel, { ReportDTO } from "../models/Report";

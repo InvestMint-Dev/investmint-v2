@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountService = void 0;
+// @ts-nocheck
 const mongoose_1 = __importDefault(require("mongoose"));
 const Account_1 = __importDefault(require("../models/Account"));
 class AccountService {

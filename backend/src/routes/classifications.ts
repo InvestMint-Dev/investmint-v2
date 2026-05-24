@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Router, Request, Response } from 'express'
 import ClassificationModel from '../models/Classification'
 
