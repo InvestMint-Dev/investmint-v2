@@ -15,35 +15,35 @@ InvestMint is the **Cash Operating System for Entrepreneurs** — institutional-
 
 ## Architecture
 
-Three servers must run simultaneously for full functionality.
+Two servers run for full functionality. The cash-flow backend has been merged into the V2 backend — a single Express process handles all routes on port 8000.
 
 | Server | Directory | Port | Responsibilities |
 |--------|-----------|------|-----------------|
-| V2 Backend | `investmint-v2/backend` | 8000 | Auth, onboarding, ETF screener, rebalancing alerts, advisor portal |
-| Cash Flow Backend | `cash-flow-backend/backend` | 4000 | Accounts, transactions, ARIMA/LSTM/STL reports |
-| Frontend | `investmint-v2/frontend` | 5173 | Full UI — talks to both backends simultaneously |
+| Backend | `investmint-v2/backend` | 8000 | Auth, onboarding, ETF screener, rebalancing alerts, advisor portal, **accounts, transactions, ARIMA/LSTM/STL reports** |
+| Frontend | `investmint-v2/frontend` | 5173 | Full UI |
 
 ### How to Start
 
-**Requires Node.js 18+.** Use `nvm use 20` (or 18) before starting the V2 backend. Node versions 18, 20, and 22 are installed via nvm.
+**Requires Node.js 18+.** Use `nvm use 20` (or 18) before starting the backend. Node versions 18, 20, and 22 are installed via nvm.
 
 ```bash
-# Terminal 1 — V2 Backend
+# Terminal 1 — Backend (unified)
 cd investmint-v2/backend
 nvm use 20
 npm run dev          # runs on port 8000
 
-# Terminal 2 — Cash Flow Backend
-cd cash-flow-backend/backend
-nvm use 20
-npm run dev          # runs on port 4000
-
-# Terminal 3 — Frontend
+# Terminal 2 — Frontend
 cd investmint-v2/frontend
 npm run dev          # runs on port 5173
 ```
 
 > **Why Node 18+?** Mongoose 9 and MongoDB driver 7 use the global Web Crypto API (`globalThis.crypto`) which is only available in Node 18+. The backend will fail to connect to MongoDB on Node 16.
+
+### Deployment
+
+The backend ships as a Docker container (see `backend/Dockerfile`) and is hosted on **Render**. The frontend is hosted on **Vercel**.
+
+Set `VITE_API_URL` in the frontend environment to the Render service URL (e.g. `https://investmint-backend.onrender.com`) before deploying.
 
 ---
 
@@ -102,11 +102,11 @@ Advisors logging in are sent directly to `/advisor/clients`. They cannot access 
 
 ### API Clients (`src/lib/api.ts`)
 
-Two Axios instances — both attach `Bearer <token>` on every request.
+One Axios instance — attaches `Bearer <token>` on every request. `cashflowApi` is an alias of `bankingApi` (both point to the same server).
 
 ```
-bankingApi  →  http://localhost:8000  (V2 backend)
-cashflowApi →  http://localhost:4000  (cash-flow backend)
+bankingApi  →  VITE_API_URL  (unified backend, default http://localhost:8000)
+cashflowApi →  bankingApi    (alias — same instance)
 ```
 
 The `handle401` interceptor skips redirect when the user is already on `/login` or `/signup` — prevents the login form from hard-reloading on a wrong-password attempt.
@@ -282,8 +282,8 @@ The `handle401` interceptor skips redirect when the user is already on `/login` 
 | `notes` | String | Optional |
 | `createdAt` / `updatedAt` | Date | |
 
-### Cash-Flow Backend Collections (port 4000)
-Managed by the separate cash-flow backend — not touched by V2:
+### Cash-Flow Collections (merged into unified backend)
+These collections live in the same `investmint` database and are served by the V2 backend on port 8000:
 - `accounts` — bank account balances from Excel upload
 - `transactions` — transaction history
 - `reports` — ARIMA / LSTM / STL / VOLATILITY model outputs
