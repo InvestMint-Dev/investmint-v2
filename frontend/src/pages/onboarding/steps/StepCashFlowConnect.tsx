@@ -43,7 +43,7 @@ export default function StepCashFlowConnect({ onFinish, onBack }: Props) {
       const accForm = new FormData()
       accForm.append('userId', userId!)
       accForm.append('data', accounts)
-      await cashflowApi.post('/addAcountExcel', accForm, { headers: { 'Content-Type': 'multipart/form-data' } })
+      await cashflowApi.post('/addAccountExcel', accForm, { headers: { 'Content-Type': 'multipart/form-data' } })
 
       const txForm = new FormData()
       txForm.append('userId', userId!)
