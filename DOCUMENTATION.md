@@ -375,32 +375,6 @@ From the client detail page (`/advisor/clients/:clientId`):
 | Advisory — Advisor profiles, bios | Mock |
 | Advisor portal — client roster, detail, audit, activity | Real — MongoDB |
 
----
-
-## Environment Variables
-
-**`investmint-v2/backend/.env`**
-```
-PORT=8000
-MONGO_URI=mongodb+srv://developer:developer@investmint.zytsi.mongodb.net/investmint?retryWrites=true&w=majority&appName=InvestMint
-JWT_SECRET=investmint-v2-super-secret-jwt-key-change-in-production
-FRONTEND_URL=http://localhost:5173
-EMAIL_USER=          # Gmail address for password reset emails
-EMAIL_PASS=          # Gmail app password
-```
-
-**`investmint-v2/frontend/.env`**
-```
-VITE_BANKING_API_URL=http://localhost:8000
-VITE_CASHFLOW_API_URL=http://localhost:4000
-VITE_UNIFIED_WORKSPACE_ID=679cf39ee3233e402a579aa8
-```
-
-**`cash-flow-backend/backend/.env`**
-```
-MONGO_URI=mongodb+srv://developer:developer@investmint.zytsi.mongodb.net/investmint?retryWrites=true&w=majority&appName=InvestMint
-PORT=4000
-```
 
 ---
 
