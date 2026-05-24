@@ -12,6 +12,11 @@ import dataCollectionRoutes from './routes/dataCollection'
 import auditRoutes from './routes/audit'
 import advisoryActivityRoutes from './routes/advisoryActivity'
 import advisorRoutes from './routes/advisor'
+import accountRoutes from './routes/accounts'
+import transactionRoutes from './routes/transactions'
+import reportRoutes from './routes/reports'
+import analysisRoutes from './routes/analysis'
+import classificationRoutes from './routes/classifications'
 
 dotenv.config()
 
@@ -39,6 +44,11 @@ app.use('/api/dataCollection', dataCollectionRoutes)
 app.use('/api/audit', auditRoutes)
 app.use('/api/advisoryActivity', advisoryActivityRoutes)
 app.use('/api/advisor', advisorRoutes)
+app.use('/', accountRoutes)
+app.use('/', transactionRoutes)
+app.use('/', reportRoutes)
+app.use('/', analysisRoutes)
+app.use('/', classificationRoutes)
 
 // Connect to MongoDB and start server
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/investmint-v2'
