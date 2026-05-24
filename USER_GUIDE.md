@@ -62,7 +62,7 @@ Each row is one transaction.
 | Column | Description | Example |
 |--------|-------------|---------|
 | `transaction_id` | Unique ID | TXN-0001 |
-| `created_at` | Transaction date | 2024-03-15 |
+| `created_at` | Transaction date | 2026-03-15 |
 | `total_amount` | Amount (positive = money in, negative = money out) | 42000 |
 | `account_id` or `account_name` | Which account — must match accounts file | ACC-001 |
 | `memo` | Description (optional) | Quarterly payroll |

@@ -17,14 +17,14 @@ import {
 type Tab = 'overview' | 'policy' | 'alm' | 'audit'
 
 const DOCUMENTS = [
-  { title: 'Cash Management Policy', status: 'complete', updated: 'May 2024', category: 'Policy' },
-  { title: 'Investment Policy Statement (IPS)', status: 'complete', updated: 'May 2024', category: 'Policy' },
-  { title: 'Asset-Liability Matching Strategy', status: 'complete', updated: 'Apr 2024', category: 'ALM' },
-  { title: 'Liquidity Risk Framework', status: 'complete', updated: 'Apr 2024', category: 'ALM' },
+  { title: 'Cash Management Policy', status: 'complete', updated: 'May 2026', category: 'Policy' },
+  { title: 'Investment Policy Statement (IPS)', status: 'complete', updated: 'May 2026', category: 'Policy' },
+  { title: 'Asset-Liability Matching Strategy', status: 'complete', updated: 'Apr 2026', category: 'ALM' },
+  { title: 'Liquidity Risk Framework', status: 'complete', updated: 'Apr 2026', category: 'ALM' },
   { title: 'Counterparty Risk Assessment', status: 'pending', updated: '—', category: 'Risk' },
-  { title: 'Board Authorization Record', status: 'complete', updated: 'Mar 2024', category: 'Governance' },
-  { title: 'Q1 2024 Investment Review', status: 'complete', updated: 'Apr 2024', category: 'Audit' },
-  { title: 'Q2 2024 Investment Review', status: 'pending', updated: '—', category: 'Audit' },
+  { title: 'Board Authorization Record', status: 'complete', updated: 'Mar 2026', category: 'Governance' },
+  { title: 'Q1 2026 Investment Review', status: 'complete', updated: 'Apr 2026', category: 'Audit' },
+  { title: 'Q2 2026 Investment Review', status: 'pending', updated: '—', category: 'Audit' },
 ]
 
 const ALM_BUCKETS = [
@@ -94,7 +94,7 @@ export default function ClientVaultPage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { label: 'Documents', value: '8', sub: '6 complete', icon: FileText },
-              { label: 'Policy Status', value: 'Active', sub: 'Last reviewed Apr 2024', icon: CheckCircle2 },
+              { label: 'Policy Status', value: 'Active', sub: 'Last reviewed Apr 2026', icon: CheckCircle2 },
               { label: 'ALM Buckets', value: '4', sub: 'All calibrated', icon: Scale },
               { label: 'Audit Records', value: '12', sub: 'This year', icon: ClipboardList },
             ].map(({ label, value, sub, icon: Icon }) => (
@@ -142,7 +142,7 @@ export default function ClientVaultPage() {
         <div className="space-y-4 animate-fade-in">
           <div className="card p-6">
             <h2 className="section-title mb-1">Cash Management Policy</h2>
-            <p className="text-xs text-gray-400 mb-5">Effective: March 2024 · Next review: September 2024</p>
+            <p className="text-xs text-gray-400 mb-5">Effective: March 2026 · Next review: September 2026</p>
             {[
               { heading: 'Objective', body: 'To ensure that idle corporate cash is managed in a systematic, disciplined, and risk-aware manner that preserves capital, maintains adequate liquidity for operations, and generates a meaningful yield on deployable balances.' },
               { heading: 'Authorized Instruments', body: 'Investment-grade fixed income ETFs (IG rating BBB+ or higher), short-duration bond ETFs (duration < 3 years), high-interest savings ETFs, and cash equivalents. Equity instruments are permitted only for the strategic tranche (18+ months horizon) up to 15% of deployable capital.' },
@@ -156,7 +156,7 @@ export default function ClientVaultPage() {
             ))}
             <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
               <button className="btn-secondary text-sm"><Download size={14} /> Download PDF</button>
-              <span className="text-xs text-gray-400">Last modified by InvestMint Advisory · Apr 12, 2024</span>
+              <span className="text-xs text-gray-400">Last modified by InvestMint Advisory · Apr 12, 2026</span>
             </div>
           </div>
         </div>

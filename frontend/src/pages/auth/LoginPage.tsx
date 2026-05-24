@@ -66,7 +66,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-gray-700 text-xs relative z-10">
-          © 2024 InvestMint Inc. · All rights reserved
+          © 2026 InvestMint Inc. · All rights reserved
         </p>
       </div>
 
