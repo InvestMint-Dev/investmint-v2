@@ -5,10 +5,9 @@ import { useForm } from 'react-hook-form'
 import { bankingApi } from '../../lib/api'
 import { useAuth } from '../../context/AuthContext'
 import type { AuditEntry, AdvisoryActivity } from '../../types'
-import { formatCurrency } from '../../lib/utils'
 import {
   ArrowLeft, Star, CheckCircle2, Clock, AlertTriangle,
-  PlusCircle, ClipboardList, MessageSquare, BarChart2, Shield,
+  PlusCircle, ClipboardList, MessageSquare, BarChart2,
 } from 'lucide-react'
 import { toast } from 'sonner'
 

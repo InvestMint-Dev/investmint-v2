@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { bankingApi } from '../../lib/api'
 import { useAuth } from '../../context/AuthContext'
 import type { AdvisoryActivity } from '../../types'
-import { Calendar, MessageSquare, CheckCircle2, ChevronRight, Building, Clock } from 'lucide-react'
+import { Calendar, MessageSquare, CheckCircle2, ChevronRight, Building } from 'lucide-react'
 
 const ADVISORS = [
   {

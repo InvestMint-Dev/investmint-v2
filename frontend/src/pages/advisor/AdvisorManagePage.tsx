@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { bankingApi } from '../../lib/api'
 import { toast } from 'sonner'
-import { UserCircle, PlusCircle, Mail, CheckCircle2, Shield, Trash2, Link2 } from 'lucide-react'
+import { PlusCircle, Mail, CheckCircle2, Shield, Trash2, Link2 } from 'lucide-react'
 
 interface Advisor {
   _id: string
